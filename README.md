@@ -1,3 +1,3 @@
 Documentation
 
-Vehicle detection on Clouds using Haar Cascades.
+Vehicle detection using Haar Cascades on Clouds.
