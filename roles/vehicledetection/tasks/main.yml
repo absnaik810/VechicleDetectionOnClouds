@@ -1,0 +1,16 @@
+---
+- name: get the Vehicle Detection package source
+  git:
+    repo: "{{ repository }}"
+    dest: "{{ tmp }}"
+    accept_hostkey: True
+    force: yes
+
+- name: build and install Vehicle Detection artifacts
+  shell: |
+    cd /tmp/vehicledetection
+    chmod +x run_vehicle_detection_video1.sh
+    chmod +x run_vehicle_detection_video2.sh
+    cd build
+    cmake ..
+    make
