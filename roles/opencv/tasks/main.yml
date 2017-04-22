@@ -1,5 +1,5 @@
 ---
-- name: Install developer and compile tools
+- name: Installation of developer tools
   become: true
   apt: name={{ item }} state=present
   with_items:
@@ -8,7 +8,7 @@
   - git
   - pkg-config
 
-- name: Install libraries for various image formats
+- name: Installation of libraries to support different image formats
   become: true
   apt: name={{ item }} state=present
   with_items:
@@ -17,7 +17,7 @@
   - libjasper-dev
   - libpng12-dev
 
-- name: Install libraries for various video formats
+- name: Installation of libraries to support different video formats
   become: true
   apt: name={{ item }} state=present
   with_items:
@@ -26,43 +26,43 @@
   - libswscale-dev
   - libv4l-dev
 
-- name: Install GTK for OpenCV GUI
+- name: Installation of GTK for OpenCV GUI support
   become: true
   apt: name=libgtk2.0-dev state=present
 
-- name: Install packages used for optimization in OpenCV
+- name: Installation of packages used for optimization in OpenCV
   become: true
   apt: name={{ item }}
   with_items:
   - libatlas-base-dev
   - gfortran
 
-- name: Install Python3 headers and development files
+- name: Installation of Python3 headers
   become: true
   apt: name=python3.4-dev
 
-- name: Install unzip
+- name: Installation of unzip for unzipping OpenCV later
   become: true
   apt: name=unzip
 
-- name: Check if temporary directory already exists
+- name: Checking if temporary directory already exists
   stat: path={{ dwnld_dr }}
   register: tmp
 
-- name: Create temporary download directory
+- name: Creating temporary download directory
   file: name={{ dwnld_dr }} state=directory
   when: tmp.stat.exists == false
 
-- name: Download and unzip opencv
+- name: Downloading and unzipping OpenCV
   unarchive: src=https://github.com/Itseez/opencv/archive/{{ ocv_ver }}.zip dest={{ dwnld_dr }} copy=no
 
 #- name: Download and unzip opencv_contrib
 #  unarchive: src=https://github.com/Itseez/opencv_contrib/archive/{{ ocv_ver }}.zip dest={{ dwnld_dr }} copy=no
 
-- name: Create build directory
+- name: Creating the build directory
   file: name={{ dwnld_dr }}/opencv-{{ ocv_ver }}/build state=directory
 
-- name: Make the opencv build artifacts
+- name: Making the OpenCV build artifacts
   shell: |
     source /usr/local/bin/virtualenvwrapper.sh
     cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=OFF -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH={{ dwnld_dr }}/opencv_contrib-{{ ocv_ver }}/modules -D BUILD_EXAMPLES=ON ..
@@ -70,7 +70,7 @@
     chdir: "{{ dwnld_dr }}/opencv-{{ ocv_ver }}/build"
     executable: /bin/bash
 
-- name: Compile opencv
+- name: Compiling OpenCV
   shell: |
     source /usr/local/bin/virtualenvwrapper.sh
     make
@@ -78,13 +78,13 @@
     chdir: "{{ dwnld_dr }}/opencv-{{ ocv_ver }}/build"
     executable: /bin/bash
 
-- name: Get full path of download directory ("~" varies by user)
+- name: Getting the full path of download directory
   shell: pwd
   args:
     chdir: "{{ dwnld_dr }}"
   register: pwd_result
 
-- name: Install opencv
+- name: Installing opencv
   become: true
   shell: |
     source /usr/local/bin/virtualenvwrapper.sh
