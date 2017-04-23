@@ -5,9 +5,10 @@
     ocv_ver: 2.4.13.2
     repository: https://github.com/absnaik810/vehicle_detection_haarcascades.git
     tmp: /tmp/vehicledetection
+    dev: /dev/vehicledetection
   roles:
     - git
-    - upgrade 
+    - upgrade
     - python
     - opencv
     - vehicledetection

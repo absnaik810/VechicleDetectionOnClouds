@@ -1,25 +1,21 @@
 ---
-- name: Check if temporary directory already exists
+- name: Checking if temporary directory exists
   stat: path={{ dwnld_dr }}
   register: tmp
 
-- name: Create temporary download directory
+- name: Creating a temporary directory for download, if not
   file: name={{ dwnld_dr }} state=directory
   when: tmp.stat.exists == false
 
-- name: Download pip installer
+- name: Downloading pip installer
   get_url: url=https://bootstrap.pypa.io/get-pip.py dest={{ dwnld_dr }}
 
-- name: Get full path of download directory ("~" varies by user)
+- name: Storing the full path of download directory in pwd_result
   shell: pwd
   args:
     chdir: "{{ dwnld_dr }}"
   register: pwd_result 
 
-- name: Install pip
+- name: Installing pip
   become: true
   command: python3 {{ pwd_result.stdout }}/get-pip.py
-
-#- name: Remove temporary download directory, if it didn't prevously exist
-#  file: name={{ dwnld_dr }} state=absent
-#  when: tmp.stat.exists == false
