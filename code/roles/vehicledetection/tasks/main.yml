@@ -27,3 +27,17 @@
   args:
     chdir: "/dev/vehicledetection/build"
     executable: /bin/bash
+
+- name: Running the demos
+  become: yes
+  shell: |
+    source /dev/vehicledetection/run_vehicle_detection_video1.sh
+  args:
+    chdir: "/dev/vehicledetection"
+    executable: /bin/bash
+
+- name: Fetching the image from the cloud onto the local machine
+  become: yes
+  fetch:
+    src: /dev/vehicledetection/video.jpg
+    dest: /tmp/
