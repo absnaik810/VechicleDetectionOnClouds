@@ -11,15 +11,22 @@ which is a cloud VM management tool.
 Directory Structure:
 =====================================================================
 
-* Benchmarking
-  * codes
+* Benchmarking : The directory conatains codes and images directories
+  * codes contains the shell scripts used for the benchmarking on:
     * deployement
-      * myScript.sh
     * latency
-      * command.txt
     * workload
-      * command.txt
-  * images
+  * images contains the images of all the benchmarking results obtained.
     * latency
     * worklaod
-*Code
+    
+* Code directory contains the roles, inventory.txt and playbook.yml
+  * roles contains the softwares required for software stack to be downloaded for the project including:
+    * git
+    * upgrade
+    * python
+    * openCV
+    * vehicle detection
+  
+  * inventory.txt includes the ip address of the uploaded VM on chameleon and the username.
+  * playbook.yaml is the ansible script which downlods the software stack on the VM. 
