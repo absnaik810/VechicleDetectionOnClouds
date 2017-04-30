@@ -31,3 +31,8 @@ Directory Structure:
   
   * inventory.txt includes the ip address of the uploaded VM on chameleon and the username, which should be modified according to ip address provided.
   * playbook.yaml is the ansible script which downlods the software stack on the machine desired. 
+
+How to run:
+=====================================================================
+* Update the inventory.txt file with the floating IP assigned to you.
+* Run the myScript.sh script present at 'benchmarking/code/deployment'.
