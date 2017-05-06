@@ -8,6 +8,28 @@
   - git
   - pkg-config
 
+- name: Installing the libraries for different image formats
+  become: true
+  apt: name={{ item }} state=present
+  with_items:
+  - libjpeg8-dev
+  - libtiff4-dev
+  - libjasper-dev
+  - libpng12-dev
+
+- name: Installing the libraries for different video formats
+  become: true
+  apt: name={{ item }} state=present
+  with_items:
+  - libavcodec-dev
+  - libavformat-dev
+  - libswscale-dev
+  - libv4l-dev
+
+- name: Installing GTK for OpenCV GUI
+  become: true
+  apt: name=libgtk2.0-dev state=present
+  
 - name: Installing the packages used for optimization
   become: true
   apt: name={{ item }}
