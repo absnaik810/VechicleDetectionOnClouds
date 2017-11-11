@@ -1,12 +1,12 @@
 Vehicle detection using Haar Cascades on Clouds.
 =================================================================
 
-This project is deploys the Vehicle Detection Application on multiple Chameleon clouds
+This project deploys the Vehicle Detection Application on multiple Chameleon clouds
 using Ansible Playbook. Vehicle Detection Application uses haar-cascade cars.xml, a pre-trained classifier 
-from openCV library which is a trained classifier, and is trained with 526 rear-end images 
-of cars. The Application is deployed on Chameleon clouds with the help of Cloudmesh client, 
+from the openCV library, trained with 526 rear-end images 
+of cars. The application is deployed on Chameleon clouds with the help of Cloudmesh client, 
 which is a cloud VM management tool for dynamic management of clouds on VMs. The Software Stack required for the 
-deployement of the vehicle detection application on VMs is done by using Ansible, which is an open source platform for 
+deployement of the application on VMs is done by using Ansible, which is an open source platform for 
 configuration management, task automation, and application deployement.
 
 Directory Structure:
@@ -37,7 +37,7 @@ How to run:
 * Update the inventory.txt file with the floating IP assigned to you.
 * Run the myScript.sh script present at 'benchmarking/code/deployment'.
 
-Report.pdf contains the project observations and benchmarks.
+The Report.pdf file contains the various observations made and benchmarking carried out during the course of the project.
 
 References:
 1. Ansible: https://www.ansible.com/
