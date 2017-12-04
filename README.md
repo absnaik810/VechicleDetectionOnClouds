@@ -43,3 +43,4 @@ References:
 1. Ansible: https://www.ansible.com/
 2. Cloudmesh: https://github.com/cloudmesh/cloudmesh
 3. Basic local Vechicle detection application: https://github.com/andrewssobral/vehicle_detection_haarcascades
+4. Open-CV Ansible: https://github.com/EDITD/ansible-opencv
